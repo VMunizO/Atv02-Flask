@@ -1,0 +1,89 @@
+<!doctype html>
+<html>
+<head> 
+    
+    <title>Compra Feita - Cadastro de {{titulo}}</title>
+
+</head>
+
+<body>
+    <h4>Cadastro de {{titulo}}</h4>
+    <form action="/anuncio/criarcompra" method="post">     
+
+        <p><label for="qtd">Quantidade</label>
+        <input type="text" id="qtd" name="qtd"></p>
+
+        <p><label for="total">Preco</label>
+        <input type="text" id="preco" name="preco"></p>
+
+        <p><label for="total">Total</label>
+        <input type="text" id="total" name="total"></p>
+
+        <p><label for="usu">Usuarios</label>
+
+            <select id="usu" name="usu">
+                
+                {% for usuario in usuarios %} 
+                    
+                <option value="{{ usuario.id }}">{{ usuario.nome }}</option>
+                
+                {% endfor %}
+    
+            </select></p>
+        
+        <p><label for="anu">Anuncios</label>
+        
+        
+        <select id="anu" name="anu">
+            
+            {% for anuncio in anuncios %} 
+                
+            <option value="{{ anuncio.id }}">{{ anuncio.nome }}</option>
+            
+            {% endfor %}
+
+        </select></p>
+
+       
+
+    
+
+        <p><input type="submit" value="Cadastrar"></p>
+    
+    </form>
+
+    <h4>Lista de {{titulo}}</h4>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Qtd</th>
+                <th>Preco</th>
+                <th>Total</th>
+                <th>Anuncio</th>
+                <th>Usuario</th>
+            </tr>
+
+        </thead>
+        
+        <tbody>
+            
+            {% for compra in compras %}
+               
+                <tr>
+                    <td>{{ compra.qtd }}</td>
+                    <td>{{ compra.preco }}</td>
+                    <td>{{ compra.total }}</td>
+                    <td>{{ compra.usu_id }}</td>
+                    <td>{{ compra.anu_id }}</td>
+                </tr>
+
+            {% endfor %}
+
+        </tbody>
+    
+    </table>
+
+</body>
+
+</html>

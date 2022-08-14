@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Compra Feita - Cadastro de {{titulo}} </title>
+</head>
+
+<body>
+
+    <h3> Cadastro de {{titulo}} </h3>
+    <form action="/usuario/novo" method="post">
+        <p><label for="user">Username</label></p>
+        <p><input type="text" id="user" name="user"</p>
+
+        <p><label for="user">E-mail</label></p>
+        <p><input type="text" id="email" name="email"</p>
+
+        <p><label for="user">Passoword</label></p>
+        <p><input type="text" id="senha" name="senha"</p>
+
+        <p><label for="user">Endereço</label></p>
+        <p><input type="text" id="ende" name="end"</p>
+
+        <p><input type="submit" value="Cadastrar"</p>
+    </form>
+
+
+    <h3> Lista de {{titulo}} </h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>Senha</th>
+                <th>Endereço</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+            <tr>
+                <td>{{ usuario.nome }}</td>
+                <td>{{ usuario.email }}</td>
+                <td>{{ usuario.senha }}</td>
+                <td>{{ usuario.end }}</td>
+                <td><a href={{ url_for("editarusuario",id=usuario.id) }}>Editar?</a></td>
+                <td><a href={{ url_for("deletarusuario",id=usuario.id) }}>Deletar?</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+
+</html>
